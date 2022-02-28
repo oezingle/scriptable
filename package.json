@@ -10,10 +10,27 @@
   "bin": {
     "scriptable": "src/cli.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "oezingle@gmail.com",
+  "license": "GPL-3.0",
   "dependencies": {
     "caller-id": "^0.1.0",
-    "commander": "^9.0.0"
-  }
+    "commander": "^9.0.0",
+    "scriptable": "^0.0.6"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oezingle/scriptable.git"
+  },
+  "keywords": [
+    "scriptable",
+    "mock",
+    "ios"
+  ],
+  "bugs": {
+    "url": "https://github.com/oezingle/scriptable/issues"
+  },
+  "homepage": "https://github.com/oezingle/scriptable#readme"
 }
