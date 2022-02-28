@@ -1,0 +1,19 @@
+{
+  "name": "scriptable",
+  "version": "1.0.0",
+  "description": "Mocked objects to allow Scriptable code to run on Node",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scriptable": "node src/cli.js"
+  },
+  "bin": {
+    "scriptable": "src/cli.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "caller-id": "^0.1.0",
+    "commander": "^9.0.0"
+  }
+}
