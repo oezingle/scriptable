@@ -1,4 +1,4 @@
-# Scriptable
+# Scriptable-Mocks
 
 A set of mocked objects that allow code written for the [Scriptable iOS app](https://scriptable.app/) to run on node.js
 
