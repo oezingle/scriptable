@@ -1,6 +1,6 @@
 {
   "name": "scriptable-mocks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mocked objects to allow Scriptable code to run on Node",
   "main": "src/index.js",
   "scripts": {

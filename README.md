@@ -4,6 +4,9 @@ A set of mocked objects that allow code written for the [Scriptable iOS app](htt
 
 # Usage
 
+## Install
+`npm i -g scriptable-mocks`
+
 ## Running a script
 `scriptable run <path-to-script>`
 
