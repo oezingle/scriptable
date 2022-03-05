@@ -1,4 +1,11 @@
-const { app, dialog } = require('electron')
+const gi = require('node-gtk')
+
+const uuidGen = require('../util/uuidGen')
+
+const GLib = gi.require('GLib', '2.0')
+const Gtk = gi.require('Gtk', '4.0')
+
+Gtk.init()
 
 const Alert = class {
     #_actions = []
@@ -9,33 +16,47 @@ const Alert = class {
         this.properties = []
         this.title = ''
         this.message = ''
-
     }
 
     present() {
-        // Electron's default is 'Ok', Scriptable's default is 'Cancel'
-        if (this.#_actions.length == 0) {
-            this.addCancelAction("Cancel")
+        const loop = GLib.MainLoop.new(null, false)
+        const app = new Gtk.Application(`com.github.oezingle.scriptable-mocks.alert.${uuidGen()}`, 0)
+
+        const ready = () => {
+            const window = new Gtk.Dialog(app)
+
+            window.setTitle('Alert')
+
+            window.on('close-request', handleQuit)
+
+            this.#_actions.forEach(action => {
+                const button = new Gtk.Button()
+
+                button.label = action.content
+
+                window.addActionWidget(button, 0)
+
+                //window.addButton(action.content, action.scriptableIndex)
+            })
+
+            window.present()
+
+            gi.startLoop()
+            loop.run()
         }
 
-        return app.whenReady()
-            .then(() => {
-                return dialog.showMessageBox({
-                    title: this.title,
-                    message: `Title: ${this.title}\n${this.message}`,
-                    properties: this.properties,
-                    // Electron only takes the text content of these actions
-                    buttons: this.#_actions.map(action => action.content)
-                })
-            })
-            .then(result => result.response)
-            .then(index => this.#_actions[index])
-            .then(action => action.scriptableIndex)
-            .then(index => {
-                this.close()
+        const handleQuit = () => {
+            loop.quit()
 
-                return index
-            })
+            app.quit()
+
+            return 0
+        }
+
+        app.on('activate', ready)
+        const status = app.run()
+
+        // as it turns out, this is all handled in sync.
     }
 
     #_addAnyAction(type, content) {

@@ -14,7 +14,8 @@
   "license": "GPL-3.0",
   "dependencies": {
     "caller-id": "^0.1.0",
-    "commander": "^9.0.0"
+    "commander": "^9.0.0",
+    "node-gtk": "^0.10.0"
   },
   "directories": {
     "test": "test"

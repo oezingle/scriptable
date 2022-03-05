@@ -26,12 +26,7 @@ const runAbsolute = (filePath) => {
         return scriptName
     }
 
-    // This should (fingers crossed) take as long as the sync portion of the module does
-    const res = require(filePath)
-
-    global.shouldQuit = true
-
-    return res
+    return require(filePath)
 }
 
 const run = (file) => {

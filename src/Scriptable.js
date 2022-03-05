@@ -1,7 +1,7 @@
 
 
 module.exports = {
-    //Alert: require('./mocks/Alert'),
+    Alert: require('./mocks/Alert'),
     args: require('./mocks/args'),
     Data: require('./mocks/Data'),
     //DocumentPicker: require('./mocks/DocumentPicker'),
